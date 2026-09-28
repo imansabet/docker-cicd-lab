@@ -20,7 +20,9 @@ services:
           memory: 512M
 
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      target: prod
     restart: unless-stopped
     environment:
       MONGO_URL: "mongodb://${MONGO_USER}:${MONGO_PASSWORD}@mongo:27017/?authSource=admin"

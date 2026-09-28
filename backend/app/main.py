@@ -36,3 +36,8 @@ def list_movies():
 def add_movie(movie: Movie):
     movies.insert_one(movie.model_dump())
     return movie
+
+
+@app.get("/api/ping")
+def ping():
+    return {"pong": True}

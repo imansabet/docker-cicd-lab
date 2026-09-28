@@ -1,0 +1,21 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      target: dev
+    ports:
+      - "8000:8000"
+    develop:
+      watch:
+        - action: sync
+          path: ./backend/app
+          target: /home/app/app
+        - action: rebuild
+          path: ./backend/requirements.txt
+
+  frontend:
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend/index.html
+          target: /usr/share/nginx/html/index.html
