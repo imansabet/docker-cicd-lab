@@ -1,4 +1,3 @@
-LABEL org.opencontainers.image.source="https://github.com/imansabet/docker-cicd-lab"
 # stage 1:  build (dependencies)
 FROM python:3.12-slim AS builder
 WORKDIR /build
@@ -30,7 +29,8 @@ HEALTHCHECK --interval=15s --timeout=3s --start-period=10s --retries=3 \
 FROM base AS dev
 CMD ["uvicorn","app.main:app","--host","0.0.0.0","--port","8000","--reload" ]	
 
-FROM base AS prod 
+FROM base AS prod
+LABEL org.opencontainers.image.source="https://github.com/imansabet/docker-cicd-lab" 
 COPY --chown=app:app app ./app
 CMD ["uvicorn","app.main:app","--host","0.0.0.0","--port","8000" ]	
 
