@@ -1,0 +1,7 @@
+services:
+  backend:
+    build: !reset null
+    image: ghcr.io/imansabet/docker-cicd-lab-backend:${BACKEND_TAG:-latest}
+  frontend:
+    build: !reset null
+    image: ghcr.io/imansabet/docker-cicd-lab-frontend:${FRONTEND_TAG:-latest}
